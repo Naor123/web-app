@@ -1,10 +1,14 @@
-function Navbar() {
+function Header() {
   return (
-   <header>
-      <img src="/src/images/globe-logo.png" alt="globe-logo" />
-      <h1>My travel journal.</h1>
-   </header>
+    <header>
+      <img
+        src="/src/images/globe-logo.png"
+        alt="globe-logo"
+        // onMouseOver={(e) => console.log("hovered")}
+      />
+      <h1>Chef Claude</h1>
+    </header>
   );
 }
 
-export default Navbar;
+export default Header;

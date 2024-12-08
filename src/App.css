@@ -1,16 +1,22 @@
+*{
+  box-sizing: border-box;
+}
 body {
   margin: 0;
+  background-color: rgb(201, 199, 182);
   /* background-color: #282d35; */
   /* color: white; */
 }
 
 header {
-  background-color: #f55a5a;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  height: 55px;
+  color: black;
+  gap: 11px;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.10), 0px 1px 2px 0px rgba(0,0,0,0.06);
+  height: 80px;
 }
 
 header > img {
@@ -20,28 +26,40 @@ header > img {
 }
 
 header > h1 {
-  font-size: 0.9rem;
+  font-size: 2rem;
   font-weight: 500;
+  font-style: italic;
 }
 
-article.journal-entry{
+main{
+  padding: 30px 30px 10px;
+}
+
+.add-ingredient-form{
   display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 12px;
+  height: 38px;
 }
-.main-image-container{
-  width: 125px;
-  height: 168px;
-  overflow: hidden;
-  border-radius: 5px;
-  margin-right: 19px;
-  flex-shrink: 0;
-}
-.main-image{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.marker-image{
-  width: 7px;
-  margin-right: 4px;
+.add-ingredient-form > input {
+  border-radius: 6px;
+  border:1px solid #d1d5db;
+  padding: 9px 13px;
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.05);
+  flex-grow: 1;
+  min-width: 150px;
+  max-width: 400px;
 }
 
+.add-ingredient-form > button{
+  border-radius: 6px;
+  border: none;
+  background-color: #141413;
+  color: #fafaf8
+} 
+
+.add-ingredient-form > button::before{
+  content: "+";
+  margin-right: 5px;
+}
