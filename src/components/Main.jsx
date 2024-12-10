@@ -1,24 +1,22 @@
+import { useState } from "react";
 function Main() {
   function clickMe() {
     console.log("hello world");
   }
-  const ingredients = ["Chicken", "Oregano", "Tomatoes"];
+  const [ingredients, setIngredients] = useState([]);
 
   const ingredientsListItems = ingredients.map((food) => (
     <li key={food}>{food}</li>
   ));
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  function handleSubmit(formData) {
     const newIngredient = formData.get("ingredient");
-    ingredients.push(newIngredient)
-    console.log(ingredients)
+    setIngredients((prev) => [...prev, newIngredient]);
   }
 
   return (
     <main>
-      <form className="add-ingredient-form" onSubmit={handleSubmit}>
+      <form className="add-ingredient-form" action={handleSubmit}>
         <input
           type="text"
           placeholder="e.g. oregano"

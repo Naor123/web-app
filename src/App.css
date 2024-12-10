@@ -1,4 +1,4 @@
-*{
+/* /* *{
   box-sizing: border-box;
 }
 body {
@@ -6,7 +6,7 @@ body {
   background-color: rgb(201, 199, 182);
   /* background-color: #282d35; */
   /* color: white; */
-}
+/* } */
 
 header {
   background-color: white;
@@ -30,11 +30,13 @@ header > h1 {
   font-weight: 500;
   font-style: italic;
 }
-
+/* 
 main{
   padding: 30px 30px 10px;
+} */
+.counter{
+  display: flex;
 }
-
 .add-ingredient-form{
   display: flex;
   justify-content: center;
@@ -62,4 +64,4 @@ main{
 .add-ingredient-form > button::before{
   content: "+";
   margin-right: 5px;
-}
+} 
