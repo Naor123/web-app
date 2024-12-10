@@ -2,25 +2,13 @@ import { useState } from "react";
 import Count from "./Count";
 
 function Test() {
-  const [count, setCount] = useState(0);
+  const [pads, setPads] = useState(["red", "yellow"]);
 
-  function addCount(){
-    setCount(prevCount => prevCount + 1) 
-  }
-  
-  function lowerCount(){
-    setCount(prevCount => prevCount - 1) 
-  }
+  const padsList = pads.map((pad) => <button key={pad}></button>);
 
   return (
     <main>
-      <div>
-        <button onClick={addCount}>+</button>
-      </div>
-      <div>
-        <button onClick={lowerCount}>-</button>
-      </div>
-      <Count count = {count}/>
+      <div>{padsList}</div>
     </main>
   );
 }
