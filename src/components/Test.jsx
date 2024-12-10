@@ -1,12 +1,27 @@
 import { useState } from "react";
+import Count from "./Count";
 
 function Test() {
-  const [unreadMessages, setUnreadMessages] = useState(["a", "b"]);
+  const [count, setCount] = useState(0);
+
+  function addCount(){
+    setCount(prevCount => prevCount + 1) 
+  }
+  
+  function lowerCount(){
+    setCount(prevCount => prevCount - 1) 
+  }
 
   return (
-    <div>
-    {unreadMessages.length > 0 && <h1>you have _ unread messages!</h1>}
-    </div>
-)
+    <main>
+      <div>
+        <button onClick={addCount}>+</button>
+      </div>
+      <div>
+        <button onClick={lowerCount}>-</button>
+      </div>
+      <Count count = {count}/>
+    </main>
+  );
 }
 export default Test;
