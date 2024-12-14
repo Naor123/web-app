@@ -1,9 +1,8 @@
 import { useState } from "react";
 function Main() {
- 
   const [ingredients, setIngredients] = useState([]);
 
-  const [recipieShown , setRecipieShown] = useState(false)
+  const [recipieShown, setRecipieShown] = useState(false);
 
   const ingredientsListItems = ingredients.map((food) => (
     <li key={food}>{food}</li>
@@ -14,7 +13,9 @@ function Main() {
     setIngredients((prev) => [...prev, newIngredient]);
   }
 
-  function flipState(){setRecipieShown((laststate)=>!laststate)}
+  function flipState() {
+    setRecipieShown((laststate) => !laststate);
+  }
 
   return (
     <main>
@@ -31,15 +32,18 @@ function Main() {
         <section>
           <h2>ingredients on hand</h2>
           <ul>{ingredientsListItems}</ul>
-          {ingredients.length > 3 && <div>
+          {ingredients.length > 3 && (
             <div>
-              <h3>ready for a recipie?</h3>
-              <p> generate a recipie from your list of ingredients</p>
+              <div>
+                <h3>ready for a recipie?</h3>
+                <p> generate a recipie from your list of ingredients</p>
+              </div>
+              <button onClick={flipState}>get a recipie</button>
             </div>
-            <button onClick={flipState}>get a recipie</button>
-          </div>}
-        </section>)}
-        {recipieShown && <h1>its working</h1>}
+          )}
+        </section>
+      )}
+      {recipieShown && <h1>its working</h1>}
     </main>
   );
 }

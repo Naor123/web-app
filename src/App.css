@@ -65,3 +65,76 @@ main{
   content: "+";
   margin-right: 5px;
 } 
+
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Adds spacing between form and meme */
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Adds spacing between input fields and button */
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns label text to the left */
+}
+
+.form input {
+  margin-top: 5px; /* Adds spacing between label and input */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px; /* Adjust as needed */
+  flex-direction: row;
+}
+
+/* Meme styling */
+.meme {
+  position: relative;
+  text-align: center;
+}
+
+.meme img {
+  max-width: 100%; /* Ensures image is responsive */
+  height: auto;
+}
+
+.meme .top, .meme .bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.meme .top {
+  top: 10px;
+}
+
+.meme .bottom {
+  bottom: 10px;
+}
+.form button {
+  padding: 8px 16px;
+  font-size: 16px; /* Makes the button normal size */
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
