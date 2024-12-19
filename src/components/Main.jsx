@@ -1,49 +1,52 @@
 import { useState } from "react";
+import Dice from "./Dice";
+
 function Main() {
-  const [ingredients, setIngredients] = useState([]);
-
-  const [recipieShown, setRecipieShown] = useState(false);
-
-  const ingredientsListItems = ingredients.map((food) => (
-    <li key={food}>{food}</li>
+  const [dice, setDice] = useState(initDices());
+  const DiceElements = dice.map((dice) => (
+    <Dice
+      key={dice.id}
+      changeState={flip}
+      num={dice.value}
+      state={dice.isHeld}
+      id={dice.id}
+    />
   ));
 
-  function handleSubmit(formData) {
-    const newIngredient = formData.get("ingredient");
-    setIngredients((prev) => [...prev, newIngredient]);
+  function initDices() {
+    const dices = [];
+    for (let index = 0; index < 10; index++) {
+      // console.log(number)
+      dices.push({
+        id: index,
+        value: Math.floor(Math.random() * 6),
+        isHeld: false,
+      });
+    }
+    return dices;
   }
 
-  function flipState() {
-    setRecipieShown((laststate) => !laststate);
+  function rollDice() {
+    setDice((prevdices)=>
+    prevdices.map((dice)=>
+    dice.isHeld ? dice :{...dice,value: Math.floor(Math.random() * 6) }));
+  }
+  function flip(id) {
+    // console.log(id);
+    setDice((prevDices) =>
+      prevDices.map((dice) =>
+        dice.id === id ? { ...dice, isHeld: !dice.isHeld } : dice
+      )
+    );
+    // setDice((prev) => ({ ...prev, isHeld: !prev.isHeld }));
   }
 
   return (
     <main>
-      <form className="add-ingredient-form" action={handleSubmit}>
-        <input
-          type="text"
-          placeholder="e.g. oregano"
-          aria-label="add ingredient"
-          name="ingredient"
-        />
-        <button>add ingredient</button>
-      </form>
-      {ingredients.length > 0 && (
-        <section>
-          <h2>ingredients on hand</h2>
-          <ul>{ingredientsListItems}</ul>
-          {ingredients.length > 3 && (
-            <div>
-              <div>
-                <h3>ready for a recipie?</h3>
-                <p> generate a recipie from your list of ingredients</p>
-              </div>
-              <button onClick={flipState}>get a recipie</button>
-            </div>
-          )}
-        </section>
-      )}
-      {recipieShown && <h1>its working</h1>}
+      <div className="dice-container">{DiceElements}</div>
+      <button className="roll-dice" onClick={rollDice}>
+        roll
+      </button>
     </main>
   );
 }

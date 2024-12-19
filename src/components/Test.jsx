@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import trollFace from "../images/Trollface.png";
 
 
@@ -10,10 +10,25 @@ function Test() {
     imageUrl: "http://i.imgflip.com/1bij.jpg",
   });
 
+  const [memess, SetMemes ] = useState([])
+
   function handleChange(event){
 
     const {value, name} = event.currentTarget
     setMemeText((prev) => ({...prev,[name]: value}))
+
+  }
+
+  useEffect(()=>{
+    fetch("https://api.imgflip.com/get_memes")
+    .then((res) => res.json())
+    .then((data) => SetMemes(data.data.memes))
+  },[])
+
+
+  function getRandomImage(){
+    const randomNum = Math.floor(Math.random() * memess.length)
+    setMemeText((prev) => ({...prev,imageUrl:memess[randomNum].url}))
 
   }
 
@@ -44,7 +59,7 @@ function Test() {
               onChange={handleChange}
             />
           </label>
-          <button>Get a new meme image</button>
+          <button onClick={getRandomImage}>Get a new meme image</button>
         </div>
         <div className="meme"> 
           <img src={memeText.imageUrl} />

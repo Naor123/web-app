@@ -1,140 +1,61 @@
-/* /* *{
+*{
   box-sizing: border-box;
 }
-body {
-  margin: 0;
-  background-color: rgb(201, 199, 182);
-  /* background-color: #282d35; */
-  /* color: white; */
-/* } */
 
-header {
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  gap: 11px;
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.10), 0px 1px 2px 0px rgba(0,0,0,0.06);
-  height: 80px;
+body{
+ margin: 0; 
+ background-color: #0b2434;
+ padding: 20px;
+ height: 110vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
 }
-
-header > img {
-  width: 40px;
-  margin-right: 7px;
-
-}
-
-header > h1 {
-  font-size: 2rem;
-  font-weight: 500;
-  font-style: italic;
-}
-/* 
-main{
-  padding: 30px 30px 10px;
-} */
-.counter{
-  display: flex;
-}
-.add-ingredient-form{
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  gap: 12px;
-  height: 38px;
-}
-.add-ingredient-form > input {
-  border-radius: 6px;
-  border:1px solid #d1d5db;
-  padding: 9px 13px;
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.05);
-  flex-grow: 1;
-  min-width: 150px;
+div#root{
+  height: 100%;
+  width: 100%;
+  max-height: 400px;
   max-width: 400px;
 }
-
-.add-ingredient-form > button{
-  border-radius: 6px;
-  border: none;
-  background-color: #141413;
-  color: #fafaf8
-} 
-
-.add-ingredient-form > button::before{
-  content: "+";
-  margin-right: 5px;
-} 
-
-
 main{
+  background-color: #f5f5f5;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 20px; /* Adds spacing between form and meme */
 }
 
-/* Form styling */
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px; /* Adds spacing between input fields and button */
+.dice-container{
+  display: grid;
+  grid-template: auto auto / repeat(5, 1fr);
+  gap:20px;
 }
 
-.form label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Aligns label text to the left */
-}
-
-.form input {
-  margin-top: 5px; /* Adds spacing between label and input */
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px; /* Adjust as needed */
-  flex-direction: row;
-}
-
-/* Meme styling */
-.meme {
-  position: relative;
-  text-align: center;
-}
-
-.meme img {
-  max-width: 100%; /* Ensures image is responsive */
-  height: auto;
-}
-
-.meme .top, .meme .bottom {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 1.5em;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.meme .top {
-  top: 10px;
-}
-
-.meme .bottom {
-  bottom: 10px;
-}
-.form button {
-  padding: 8px 16px;
-  font-size: 16px; /* Makes the button normal size */
+.dice-container button {
+  height: 50px;
+  width: 50px;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.15);
+  border: 10px;
   border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
+  background-color: white;
+  font-family: sans-serif;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+button{
   cursor: pointer;
 }
-
-.form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+button.roll-dice{
+  height: 50px;
+  width: 100px;
+  border: none;
+  border-radius: 6px;
+  background-color:black;
+  color: white;
+  font-size: 1.2rem;
+  
 }
