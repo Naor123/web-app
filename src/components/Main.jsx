@@ -60,6 +60,7 @@ function Main() {
       <div className="dice-container">{DiceElements}</div>
       <button className="roll-dice" onClick={rollDice}>
         {gameWon ? "new game": "roll"}
+        {gameWon ? "new game": "roll"}
       </button>
     </main>
   );
