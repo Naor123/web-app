@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Dice from "./Dice";
-// import ConfettiExplosion from 'react-confetti-explosion';
+import Confetti from "react-confetti"
+
 function Main() {
-  const [dice, setDice] = useState(initDices());
-  const [isExploding, setIsExploding] = React.useState(true);
+  const [dice, setDice] = useState(()=> initDices());
+  const [isExploding, setIsExploding] = useState(true);
   let gameWon = false
   if ((dice.every(die => die.isHeld) )&& (dice.every(die => die.value === dice[0].value) )) 
   {
     gameWon = true
-  //  {isExploding && <ConfettiExplosion />}
   }
   const DiceElements = dice.map((dice) => (
     <Dice
@@ -34,11 +34,15 @@ function Main() {
   }
 
   function rollDice() {
+    if(!gameWon){
     setDice((prevdices) =>
       prevdices.map((dice) =>
         dice.isHeld ? dice : { ...dice, value: Math.floor(Math.random() * 6) }
       )
     );
+  }else{
+    setDice(initDices())
+  }
   }
   function flip(id) {
     // console.log(id);
@@ -52,8 +56,10 @@ function Main() {
 
   return (
     <main>
+      {gameWon && <Confetti />}
       <div className="dice-container">{DiceElements}</div>
       <button className="roll-dice" onClick={rollDice}>
+        {gameWon ? "new game": "roll"}
         {gameWon ? "new game": "roll"}
       </button>
     </main>
@@ -61,3 +67,4 @@ function Main() {
 }
 
 export default Main;
+
