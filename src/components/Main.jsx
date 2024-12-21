@@ -1,8 +1,15 @@
 import { useState } from "react";
 import Dice from "./Dice";
+import Confetti from "react-confetti"
 
 function Main() {
-  const [dice, setDice] = useState(initDices());
+  const [dice, setDice] = useState(()=> initDices());
+  const [isExploding, setIsExploding] = useState(true);
+  let gameWon = false
+  if ((dice.every(die => die.isHeld) )&& (dice.every(die => die.value === dice[0].value) )) 
+  {
+    gameWon = true
+  }
   const DiceElements = dice.map((dice) => (
     <Dice
       key={dice.id}
@@ -27,9 +34,15 @@ function Main() {
   }
 
   function rollDice() {
-    setDice((prevdices)=>
-    prevdices.map((dice)=>
-    dice.isHeld ? dice :{...dice,value: Math.floor(Math.random() * 6) }));
+    if(!gameWon){
+    setDice((prevdices) =>
+      prevdices.map((dice) =>
+        dice.isHeld ? dice : { ...dice, value: Math.floor(Math.random() * 6) }
+      )
+    );
+  }else{
+    setDice(initDices())
+  }
   }
   function flip(id) {
     // console.log(id);
@@ -43,12 +56,14 @@ function Main() {
 
   return (
     <main>
+      {gameWon && <Confetti />}
       <div className="dice-container">{DiceElements}</div>
       <button className="roll-dice" onClick={rollDice}>
-        roll
+        {gameWon ? "new game": "roll"}
       </button>
     </main>
   );
 }
 
 export default Main;
+
